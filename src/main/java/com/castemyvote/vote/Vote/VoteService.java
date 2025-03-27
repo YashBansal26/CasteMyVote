@@ -1,3 +1,12 @@
+package com.castemyvote.vote.Vote;
+
+import com.castemyvote.vote.Candidate.Candidate;
+import com.castemyvote.vote.Candidate.CandidateRepository;
+import com.castemyvote.vote.User.User;
+import com.castemyvote.vote.User.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class VoteService {
     @Autowired
