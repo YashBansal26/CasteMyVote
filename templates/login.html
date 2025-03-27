@@ -9,12 +9,12 @@
 <body>
     <div class="login-container">
         <h2>🗳️ Login to CastMyVote</h2>
-        <form action="index.html" method="POST">
-            <label for="voterId">Voter ID</label>
+        <form action="vote.html" method="GET">
+            <label for="voterId">Voter ID: </label>
             <input type="text" id="voterId" name="voterId" placeholder="Enter your Voter ID" required>
 
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" placeholder="Enter the password" required>
 
             <button type="submit" class="btn">Login</button>
         </form>
