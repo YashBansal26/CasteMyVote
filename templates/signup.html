@@ -3,42 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
+    <title>SignUp | CastMyVote</title>
     <link rel="stylesheet" href="../static/signup.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="signup-container">
+        <div class="security-badge">
+            <div class="shield-icon">🛡️</div>
+            <span>Secure Registration</span>
+        </div>
+        
         <h2>🗳️ Create Your Account</h2>
-        <form action="login.html" method="get">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="date">Date Of Birth</label>
-            <input type="date" id="date" name="date" required>
-
-            <label for="number">Aadhar Number</label>
-            <input type="tel" id="Aadhar" name="Aadhar" required>
-
-            <label for="voterId">Voter ID</label>
-            <input type="text" id="voterId" name="voterId" required>
-
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" required>
-
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" required>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit"><a href="login.html"></a>Sign Up</button>
-            <!-- <button><a href="login.html">Log In</a></button> -->
+        
+        <form id="signupForm" action="login.html" method="get">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-input-container">
+                    <span class="country-code">+91</span>
+                    <input type="tel" id="phone" name="phone" placeholder="74287 30894" pattern="[0-9]{10}" required>
+                </div>
+                <small class="hint">10 digit mobile number</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Date Of Birth</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Aadhar">Aadhar Number</label>
+                <input type="tel" id="Aadhar" name="Aadhar" placeholder="1234 5678 9123" pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}" required>
+                <small class="hint">12 digit Aadhar with spaces</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="voterId">Voter ID</label>
+                <input type="text" id="voterId" name="voterId" placeholder="ABC1234567" pattern="[A-Z]{3}[0-9]{7}" required>
+                <small class="hint">Format: ABC1234567</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="State" required>
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City" required>
+            </div>
+            
+            <div class="form-group password-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required minlength="8">
+                <span class="password-toggle">👁️</span>
+                <small class="hint">Minimum 8 characters</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+            </div>
+            
+            <!-- CAPTCHA Section -->
+            <div class="captcha-container">
+                <div class="captcha-box">
+                    <div id="captchaText" class="captcha-text"></div>
+                    <button type="button" id="refreshCaptcha" class="refresh-btn">🔄</button>
+                </div>
+                <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required>
+                <small id="captchaError" class="error-message"></small>
+            </div>
+            
+            <!-- Google reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-theme="dark"></div>
+            
+            <div class="form-footer">
+                <button type="submit" class="btn primary">Sign Up</button>
+                <p>Already have an account? <a href="login.html">Login Here</a></p>
+            </div>
         </form>
-        <p>Already have an account? <a href="login.html">Login Here</a></p>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // CAPTCHA Generation
+            const captchaText = document.getElementById('captchaText');
+            const refreshBtn = document.getElementById('refreshCaptcha');
+            const captchaInput = document.getElementById('captchaInput');
+            const captchaError = document.getElementById('captchaError');
+            let currentCaptcha = '';
+            
+            // Generate random CAPTCHA
+            function generateCaptcha() {
+                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+                let captcha = '';
+                for(let i = 0; i < 6; i++) {
+                    captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                currentCaptcha = captcha;
+                captchaText.textContent = captcha;
+                captchaInput.value = '';
+                captchaError.textContent = '';
+            }
+            
+            // Initialize CAPTCHA
+            generateCaptcha();
+            
+            // Refresh CAPTCHA
+            refreshBtn.addEventListener('click', generateCaptcha);
+            
+            // Validate CAPTCHA on form submit
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                if(captchaInput.value !== currentCaptcha) {
+                    e.preventDefault();
+                    captchaError.textContent = 'CAPTCHA verification failed';
+                    generateCaptcha();
+                }
+                // Additional validation can be added here
+            });
+            
+            // Password toggle
+            const passwordToggle = document.querySelector('.password-toggle');
+            const passwordField = document.getElementById('password');
+            
+            passwordToggle.addEventListener('click', function() {
+                if(passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    passwordToggle.textContent = '👁️‍🗨️';
+                } else {
+                    passwordField.type = 'password';
+                    passwordToggle.textContent = '👁️';
+                }
+            });
+            
+            // Password confirmation validation
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            
+            function validatePassword() {
+                if(password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity("Passwords don't match");
+                } else {
+                    confirmPassword.setCustomValidity('');
+                }
+            }
+            
+            password.onchange = validatePassword;
+            confirmPassword.onkeyup = validatePassword;
+            
+            // Date validation (must be at least 18 years old)
+            const dobInput = document.getElementById('date');
+            dobInput.addEventListener('change', function() {
+                const dob = new Date(this.value);
+                const today = new Date();
+                const age = today.getFullYear() - dob.getFullYear();
+                const monthDiff = today.getMonth() - dob.getMonth();
+                
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                
+                if(age < 18) {
+                    this.setCustomValidity('You must be at least 18 years old');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

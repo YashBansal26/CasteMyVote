@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Authentication | CastMyVote</title>
+    <link rel="stylesheet" href="../static/votelogin.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="security-badge">
+            <div class="shield-icon">🛡️</div>
+            <span>Secure Voting Portal</span>
+        </div>
+        
+        <h2>🔒 Final Authentication</h2>
+        
+        <div class="security-notice">
+            <h3>Security Verification Required</h3>
+            <p>For your security, please authenticate again before casting your vote.</p>
+        </div>
+        
+        <form action="vote.html" method="get" id="voteAuthForm">
+            <div class="input-group">
+                <label for="voterId">Voter ID</label>
+                <input type="text" id="voterId" name="voterId" required readonly>
+            </div>
+            
+            <div class="input-group">
+                <label for="votePassword">Voting Password</label>
+                <input type="password" id="votePassword" name="votePassword" required placeholder="••••••••">
+                <span class="password-toggle">👁️</span>
+            </div>
+            
+            
+            <button type="submit" class="btn primary">Proceed to Vote</button>
+        </form>
+        
+        <p class="security-tip">
+            <small>🔐 This extra step ensures no one can vote using your account even if you're still logged in.</small>
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-populate voter ID (simulated)
+            const voterId = sessionStorage.getItem('voterId') || 'ABC1234567';
+            document.getElementById('voterId').value = voterId;
+            
+            // Password toggle
+            const passwordToggle = document.querySelector('.password-toggle');
+            const passwordField = document.getElementById('votePassword');
+            
+            passwordToggle.addEventListener('click', function() {
+                if(passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    passwordToggle.textContent = '👁️‍🗨️';
+                } else {
+                    passwordField.type = 'password';
+                    passwordToggle.textContent = '👁️';
+                }
+            });
+            
+            // Biometric authentication simulation
+            document.getElementById('useBiometric').addEventListener('change', function(e) {
+                if(e.target.checked) {
+                    alert("Biometric authentication would now be triggered on a real device");
+                    passwordField.disabled = true;
+                } else {
+                    passwordField.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

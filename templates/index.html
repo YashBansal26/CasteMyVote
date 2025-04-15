@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,13 +11,15 @@
 <body>
     <nav>
         <div class="nav-left">
-            <!-- <a href="index.html">CastMyVote</a> -->
-            <img id="eci" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Election_Commission_of_India_Logo.svg/1200px-Election_Commission_of_India_Logo.svg.png" alt="eci">
+            <a href="index.html">CastMyVote</a>
+            <img id="eci"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Election_Commission_of_India_Logo.svg/1200px-Election_Commission_of_India_Logo.svg.png"
+                alt="eci">
         </div>
         <div class="nav-right">
             <button class="box"><a href="login.html">Log In</a></button>
-                 
-                <button class="box"><a href="signup.html">Register</a></button>
+
+            <button class="box"><a href="signup.html">Register</a></button>
         </div>
     </nav>
 
@@ -58,8 +60,111 @@
         </button>
     </a>
 
-    <footer> 
-        
+    <footer>
+
     </footer>
 </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CastMyVote - Secure Online Voting</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Election_Commission_of_India_Logo.svg/1200px-Election_Commission_of_India_Logo.svg.png"
+                    alt="ECI Logo">
+                <span>CastMyVote</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+            </div>
+            <div class="auth-section">
+                <div id="user-greeting" class="hidden">
+                    <span id="username-display"></span>
+                    <a href="#" id="logout-btn" class="btn btn-logout">Logout</a>
+                </div>
+                <div id="auth-buttons" class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Vote Matters</h1>
+                <p>Secure, transparent, and accessible online voting for the digital age.</p>
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://illustrations.popsy.co/gray/digital-nomad.svg" alt="Online voting illustration">
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Why Choose CastMyVote?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Military-Grade Security</h3>
+                    <p>End-to-end encryption and blockchain technology ensure your vote is secure and tamper-proof.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Vote from anywhere using your smartphone, tablet, or computer.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Identity Verified</h3>
+                    <p>Multi-factor authentication prevents fraudulent votes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Register</h3>
+                    <p>Create your account with verified government ID.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Authenticate</h3>
+                    <p>Verify your identity when you're ready to vote.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Vote</h3>
+                    <p>Cast your ballot securely in minutes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 CastMyVote. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
 </html>
