@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote | CastMyVote</title>
+    <link rel="stylesheet" href="../static/vote.css">
+</head>
+<body>
+    <div class="vote-container">
+        <h2>🗳️ Cast Your Vote</h2>
+        <form action="index.html" method="GET">
+            
+            <label for="voterId">Voter ID</label>
+            <input type="text" id="voterId" name="voterId" placeholder="Enter your Voter ID" required>
+
+            <h3>Select Your Candidate</h3>
+            <div class="candidates">
+                <label>
+                    <input type="radio" name="candidate" value="Bharatiye Janta Prty" required>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Bharatiya_Janata_Party_%28icon%29.svg/640px-Bharatiya_Janata_Party_%28icon%29.svg.png" alt="Candidate A">
+                    <span>Bharatiye Janta Party</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="candidate" value="Indian National Congress">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/INC_Flag_Official.jpg" alt="Candidate B">
+                    <span>Indian National Congress</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="candidate" value="Samajwadi Party">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Samajwadi_Party.png" alt="Candidate C">
+                    <span>Samajwadi Party</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Submit Vote</button>
+        </form>
+        <p><a href="results.html">View Results</a></p>
+    </div>
+</body>
+</html>
