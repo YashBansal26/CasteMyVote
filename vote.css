@@ -1,0 +1,203 @@
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2d2d2d;
+    --border-color: #3d3d3d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --accent-color: #5c6bc0;
+    --accent-dark: #3a5bc7;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    background-image: radial-gradient(circle at 25% 25%, #1a237e 0%, var(--bg-primary) 100%);
+}
+
+/* Voting Container */
+.voting-container {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--border-color);
+}
+
+/* Security Badge */
+.security-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background-color: var(--accent-dark);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+/* Header */
+h1 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.election-info {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Candidate Selection */
+.candidate-selection h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.candidates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.candidate-card {
+    position: relative;
+}
+
+.candidate-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.candidate-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.candidate-card input[type="radio"]:checked + .candidate-info {
+    border: 2px solid var(--accent-color);
+    background-color: rgba(92, 107, 192, 0.1);
+    box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.2);
+}
+
+.party-symbol {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.candidate-details h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.party-name {
+    margin: 0.3rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.candidate-qualification {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* NOTA Option */
+.nota-option .party-symbol {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary);
+    border: 2px solid var(--danger-color);
+}
+
+.nota-option input[type="radio"]:checked + .candidate-info {
+    border: 2px solid var(--danger-color);
+    background-color: rgba(244, 67, 54, 0.1);
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+}
+
+/* Vote Actions */
+.vote-actions {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.submit-vote {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.submit-vote:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit-vote:disabled {
+    background-color: var(--secondary-color);
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .voting-container {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .candidate-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}

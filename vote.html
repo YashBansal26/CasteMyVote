@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cast Your Vote | CastMyVote</title>
+    <link rel="stylesheet" href="../static/vote.css">
+</head>
+<body>
+    <div class="voting-container">
+        <div class="security-badge">
+            <div class="shield-icon">🛡️</div>
+            <span>Secure Voting Session</span>
+        </div>
+        
+        <h1>🗳️ General Election 2024</h1>
+        <p class="election-info">You're voting in <strong>Lok Sabha Constituency: Uttar Pradesh</strong></p>
+
+        <form id="votingForm" class="candidate-selection">
+            <h2>Select Your Candidate:</h2>
+            
+            <div class="candidates-list">
+                <!-- Candidate 1 -->
+                <div class="candidate-card">
+                    <input type="radio" id="candidate1" name="candidate" value="candidate1" required>
+                    <label for="candidate1" class="candidate-info">
+                        <div class="party-symbol" style="background-color: #FF5252;">A</div>
+                        <div class="candidate-details">
+                            <h3>Rahul Gandhi</h3>
+                            <p class="party-name">Indian National Congress</p>
+                            
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Candidate 2 -->
+                <div class="candidate-card">
+                    <input type="radio" id="candidate2" name="candidate" value="candidate2">
+                    <label for="candidate2" class="candidate-info">
+                        <div class="party-symbol" style="background-color: #4CAF50;">B</div>
+                        <div class="candidate-details">
+                            <h3>Aditya Nath Yogi</h3>
+                            <p class="party-name">Bharatiya Janata Party</p>
+                            
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Candidate 3 -->
+                <div class="candidate-card">
+                    <input type="radio" id="candidate3" name="candidate" value="candidate3">
+                    <label for="candidate3" class="candidate-info">
+                        <div class="party-symbol" style="background-color: #2196F3;">C</div>
+                        <div class="candidate-details">
+                            <h3>Akhilesh Yadav</h3>
+                            <p class="party-name">Samajwadi Party</p>
+                            
+                        </div>
+                    </label>
+                </div>
+
+                <!-- NOTA Option -->
+                <div class="candidate-card nota-option">
+                    <input type="radio" id="nota" name="candidate" value="nota">
+                    <label for="nota" class="candidate-info">
+                        <div class="party-symbol" style="background-color: #9E9E9E;">✖</div>
+                        <div class="candidate-details">
+                            <h3>None of the Above (NOTA)</h3>
+                            <p class="party-name">Reject all candidates</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="vote-actions">
+                <button type="submit" class="btn submit-vote">Submit Vote</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('votingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show submitting state
+            const submitBtn = document.querySelector('.submit-vote');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Simulate processing delay (1.5 seconds)
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
